@@ -1,5 +1,5 @@
+import 'package:candlesticks/candlesticks.dart';
 import 'package:flutter/material.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 
 class ChartPage extends StatefulWidget {
   static const minimumCandles = 5;

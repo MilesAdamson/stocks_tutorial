@@ -1,7 +1,7 @@
+import 'package:candlesticks/candlesticks.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stocks_tutorial/api/api.dart';
 import 'package:stocks_tutorial/api/resolution.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 import 'package:stocks_tutorial/models/get_candles_request.dart';
 import 'package:stocks_tutorial/state/app_state.dart';
 

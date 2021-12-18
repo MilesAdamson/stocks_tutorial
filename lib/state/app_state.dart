@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:candlesticks/candlesticks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 
 part 'app_state.freezed.dart';
 

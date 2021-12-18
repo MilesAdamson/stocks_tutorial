@@ -1,6 +1,6 @@
+import 'package:candlesticks/candlesticks.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 import 'package:stocks_tutorial/models/candles_payload.dart';
 import 'package:stocks_tutorial/models/get_candles_request.dart';
 

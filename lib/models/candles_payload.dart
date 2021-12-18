@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:candlesticks/candlesticks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 
 part 'candles_payload.freezed.dart';
 part 'candles_payload.g.dart';
@@ -17,7 +17,7 @@ class CandlesPayload with _$CandlesPayload {
     @JsonKey(name: 'l') List<double> low,
     @JsonKey(name: 'o') List<double> open,
     @JsonKey(name: 't') List<int> unixTimestamp,
-    @JsonKey(name: 'v') List<int> volume,
+    @JsonKey(name: 'v') List<double> volume,
   ) = _CandlesPayload;
 
   factory CandlesPayload.fromJson(Map<String, dynamic> json) =>
@@ -50,12 +50,12 @@ class CandlesPayload with _$CandlesPayload {
 
     for (int i = 0; i < close.length; i++) {
       candles.add(Candle(
-        close[i],
-        high[i],
-        low[i],
-        open[i],
-        DateTime.fromMillisecondsSinceEpoch(unixTimestamp[i]),
-        volume[i],
+        close: close[i],
+        high: high[i],
+        low: low[i],
+        open: open[i],
+        date: DateTime.fromMillisecondsSinceEpoch(unixTimestamp[i]),
+        volume: volume[i],
       ));
     }
 

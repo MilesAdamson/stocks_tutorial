@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:candlesticks/candlesticks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:stocks_tutorial/components/chart_page.dart';
 import 'package:stocks_tutorial/components/search_form.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 import 'package:stocks_tutorial/state/app_state.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
 
