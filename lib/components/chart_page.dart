@@ -65,7 +65,7 @@ class ChartPageState extends State<ChartPage> {
             );
           }
 
-          final candles = state.candles;
+          final candles = state.candles.trimForPerformance(isPortrait);
 
           return SfCartesianChart(
             primaryXAxis: DateTimeAxis(),
