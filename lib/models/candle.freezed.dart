@@ -168,9 +168,10 @@ class __$CandleCopyWithImpl<$Res> extends _$CandleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Candle implements _Candle {
+class _$_Candle extends _Candle {
   _$_Candle(
-      this.close, this.high, this.low, this.open, this.timestamp, this.volume);
+      this.close, this.high, this.low, this.open, this.timestamp, this.volume)
+      : super._();
 
   @override
   final double close;
@@ -219,9 +220,10 @@ class _$_Candle implements _Candle {
       __$CandleCopyWithImpl<_Candle>(this, _$identity);
 }
 
-abstract class _Candle implements Candle {
+abstract class _Candle extends Candle {
   factory _Candle(double close, double high, double low, double open,
       DateTime timestamp, int volume) = _$_Candle;
+  _Candle._() : super._();
 
   @override
   double get close;
