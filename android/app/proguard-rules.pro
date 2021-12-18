@@ -1,0 +1,1 @@
+-keep class com.example.stocks_tutorial.BuildConfig { *; }

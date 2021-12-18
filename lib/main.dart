@@ -13,7 +13,7 @@ void main() async {
   // your own ".env" file in the root level folder (which has pubspec.yaml)
   // and get your own api key.
   await FlutterConfig.loadEnvVariables();
-  final apiKey = FlutterConfig.get('API_KEY');
+  final apiKey = FlutterConfig.get('API_KEY').toString();
   final api = Api(Api.buildDefaultHttpClient(apiKey));
 
   runApp(MyApp(api: api));
