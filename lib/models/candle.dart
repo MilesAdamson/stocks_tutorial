@@ -13,5 +13,5 @@ class Candle with _$Candle {
     double open,
     DateTime timestamp,
     int volume,
-  ) = _CandleViewModel;
+  ) = _Candle;
 }

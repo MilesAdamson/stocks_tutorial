@@ -25,12 +25,12 @@ class AppStateCubit extends Cubit<AppState> {
       final request = GetCandlesRequest(resolution, to, from, symbol);
       final candles = await _api.getCandles(request);
 
+      debugPrint("Fetched ${candles.length} candles");
+
       final symbolStates = Map<String, SymbolState>.from(state.symbolStates);
       symbolStates[symbol] = SymbolState.loaded(candles);
       emit(state.copyWith(symbolStates: symbolStates));
-    } on ApiException catch (e, s) {
-      debugPrint("$e\n$s");
-
+    } on ApiException catch (_) {
       final symbolStates = Map<String, SymbolState>.from(state.symbolStates);
       symbolStates[symbol] = SymbolState.error();
       emit(state.copyWith(symbolStates: symbolStates));

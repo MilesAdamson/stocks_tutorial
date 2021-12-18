@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 import 'package:stocks_tutorial/api/resolution.dart';
+import 'package:stocks_tutorial/state/bloc.dart';
 import 'package:stocks_tutorial/utils/date_time_helper.dart';
 
 class SearchForm extends StatefulWidget {
@@ -42,7 +44,13 @@ class SearchFormState extends State<SearchForm> {
       child: ElevatedButton(
         onPressed: () {
           if (_formKey.currentState!.validate()) {
-            //
+            final bloc = context.read<AppStateCubit>();
+            bloc.loadCandles(
+              _symbolController.text.trim(),
+              startDate!,
+              endDate!,
+              resolution!,
+            );
           }
         },
         child: const Text("Search"),
@@ -78,7 +86,8 @@ class SearchFormState extends State<SearchForm> {
             );
 
             if (date != null) {
-              setState(() => endDate = date);
+              setState(() => endDate = date
+                  .add(const Duration(hours: 23, minutes: 59, seconds: 59)));
               field.didChange(date);
             }
           },
