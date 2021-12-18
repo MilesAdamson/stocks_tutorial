@@ -3,6 +3,7 @@ import 'package:provider/src/provider.dart';
 import 'package:stocks_tutorial/api/resolution.dart';
 import 'package:stocks_tutorial/components/chart_page.dart';
 import 'package:stocks_tutorial/models/candle.dart';
+import 'package:stocks_tutorial/models/get_candles_request.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
 import 'package:stocks_tutorial/utils/date_time_helper.dart';
 
@@ -19,12 +20,16 @@ class SearchForm extends StatefulWidget {
 }
 
 class SearchFormState extends State<SearchForm> {
-  final _symbolController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  Resolution? resolution;
-  DateTime? startDate;
-  DateTime? endDate;
+  late final GetCandlesRequest? recentQuery =
+      context.read<AppStateCubit>().state.recentQuery;
+
+  late Resolution? resolution = recentQuery?.resolution;
+  late DateTime? startDate = recentQuery?.from;
+  late DateTime? endDate = recentQuery?.to;
+  late final _symbolController =
+      TextEditingController(text: recentQuery?.symbol);
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +76,7 @@ class SearchFormState extends State<SearchForm> {
 
   FormField<DateTime> buildEndDateSelect(BuildContext context) {
     return FormField<DateTime>(
+      initialValue: endDate,
       validator: (endDate) {
         if (endDate == null) {
           return "End date is required";
@@ -110,6 +116,7 @@ class SearchFormState extends State<SearchForm> {
 
   FormField<DateTime> buildStartDateSelect(BuildContext context) {
     return FormField<DateTime>(
+      initialValue: startDate,
       validator: (startDate) {
         if (startDate == null) {
           return "Start date is required";
@@ -171,6 +178,7 @@ class SearchFormState extends State<SearchForm> {
 
   FormField<Resolution> buildResolutionSelector() {
     return FormField<Resolution>(
+      initialValue: resolution,
       validator: (r) {
         if (r == null) {
           return "Resolution is required";

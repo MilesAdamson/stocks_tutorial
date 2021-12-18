@@ -18,8 +18,8 @@ Map<String, dynamic> _$$_GetCandlesRequestToJson(
         _$_GetCandlesRequest instance) =>
     <String, dynamic>{
       'resolution': ResolutionExtensions.toJson(instance.resolution),
-      'to': DateTimeHelper.toJson(instance.to),
-      'from': DateTimeHelper.toJson(instance.from),
+      'to': DateTimeHelper.toUnixSeconds(instance.to),
+      'from': DateTimeHelper.toUnixSeconds(instance.from),
       'symbol': instance.symbol,
     };
 

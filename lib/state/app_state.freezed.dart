@@ -18,13 +18,14 @@ class _$AppStateTearOff {
   const _$AppStateTearOff();
 
   _AppState call(List<Candle> candles, String? currentSymbol, bool isLoading,
-      bool hasError, String? errorMessage) {
+      bool hasError, String? errorMessage, GetCandlesRequest? recentQuery) {
     return _AppState(
       candles,
       currentSymbol,
       isLoading,
       hasError,
       errorMessage,
+      recentQuery,
     );
   }
 }
@@ -39,6 +40,7 @@ mixin _$AppState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  GetCandlesRequest? get recentQuery => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -54,7 +56,10 @@ abstract class $AppStateCopyWith<$Res> {
       String? currentSymbol,
       bool isLoading,
       bool hasError,
-      String? errorMessage});
+      String? errorMessage,
+      GetCandlesRequest? recentQuery});
+
+  $GetCandlesRequestCopyWith<$Res>? get recentQuery;
 }
 
 /// @nodoc
@@ -72,6 +77,7 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
     Object? isLoading = freezed,
     Object? hasError = freezed,
     Object? errorMessage = freezed,
+    Object? recentQuery = freezed,
   }) {
     return _then(_value.copyWith(
       candles: candles == freezed
@@ -94,7 +100,22 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      recentQuery: recentQuery == freezed
+          ? _value.recentQuery
+          : recentQuery // ignore: cast_nullable_to_non_nullable
+              as GetCandlesRequest?,
     ));
+  }
+
+  @override
+  $GetCandlesRequestCopyWith<$Res>? get recentQuery {
+    if (_value.recentQuery == null) {
+      return null;
+    }
+
+    return $GetCandlesRequestCopyWith<$Res>(_value.recentQuery!, (value) {
+      return _then(_value.copyWith(recentQuery: value));
+    });
   }
 }
 
@@ -108,7 +129,11 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       String? currentSymbol,
       bool isLoading,
       bool hasError,
-      String? errorMessage});
+      String? errorMessage,
+      GetCandlesRequest? recentQuery});
+
+  @override
+  $GetCandlesRequestCopyWith<$Res>? get recentQuery;
 }
 
 /// @nodoc
@@ -127,6 +152,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? hasError = freezed,
     Object? errorMessage = freezed,
+    Object? recentQuery = freezed,
   }) {
     return _then(_AppState(
       candles == freezed
@@ -149,6 +175,10 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      recentQuery == freezed
+          ? _value.recentQuery
+          : recentQuery // ignore: cast_nullable_to_non_nullable
+              as GetCandlesRequest?,
     ));
   }
 }
@@ -157,7 +187,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 
 class _$_AppState implements _AppState {
   _$_AppState(this.candles, this.currentSymbol, this.isLoading, this.hasError,
-      this.errorMessage);
+      this.errorMessage, this.recentQuery);
 
   @override
   final List<Candle> candles;
@@ -169,10 +199,12 @@ class _$_AppState implements _AppState {
   final bool hasError;
   @override
   final String? errorMessage;
+  @override
+  final GetCandlesRequest? recentQuery;
 
   @override
   String toString() {
-    return 'AppState(candles: $candles, currentSymbol: $currentSymbol, isLoading: $isLoading, hasError: $hasError, errorMessage: $errorMessage)';
+    return 'AppState(candles: $candles, currentSymbol: $currentSymbol, isLoading: $isLoading, hasError: $hasError, errorMessage: $errorMessage, recentQuery: $recentQuery)';
   }
 
   @override
@@ -186,7 +218,9 @@ class _$_AppState implements _AppState {
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.hasError, hasError) &&
             const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+                .equals(other.errorMessage, errorMessage) &&
+            const DeepCollectionEquality()
+                .equals(other.recentQuery, recentQuery));
   }
 
   @override
@@ -196,7 +230,8 @@ class _$_AppState implements _AppState {
       const DeepCollectionEquality().hash(currentSymbol),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(hasError),
-      const DeepCollectionEquality().hash(errorMessage));
+      const DeepCollectionEquality().hash(errorMessage),
+      const DeepCollectionEquality().hash(recentQuery));
 
   @JsonKey(ignore: true)
   @override
@@ -205,8 +240,13 @@ class _$_AppState implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  factory _AppState(List<Candle> candles, String? currentSymbol, bool isLoading,
-      bool hasError, String? errorMessage) = _$_AppState;
+  factory _AppState(
+      List<Candle> candles,
+      String? currentSymbol,
+      bool isLoading,
+      bool hasError,
+      String? errorMessage,
+      GetCandlesRequest? recentQuery) = _$_AppState;
 
   @override
   List<Candle> get candles;
@@ -218,6 +258,8 @@ abstract class _AppState implements AppState {
   bool get hasError;
   @override
   String? get errorMessage;
+  @override
+  GetCandlesRequest? get recentQuery;
   @override
   @JsonKey(ignore: true)
   _$AppStateCopyWith<_AppState> get copyWith =>

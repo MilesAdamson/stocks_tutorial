@@ -23,8 +23,8 @@ class CandlesPayload with _$CandlesPayload {
   factory CandlesPayload.fromJson(Map<String, dynamic> json) =>
       _$CandlesPayloadFromJson(json);
 
-  /// This method groups the data by timestamp. Why someone designed this
-  /// api with everything split up into different lists is beyond me
+  /// This method groups the data by timestamp. It is
+  /// much easier to plot if we group the data this way
   List<Candle> toCandles() {
     final candles = <Candle>[];
     assert(

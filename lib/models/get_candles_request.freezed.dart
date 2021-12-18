@@ -23,8 +23,8 @@ class _$GetCandlesRequestTearOff {
 
   _GetCandlesRequest call(
       @JsonKey(toJson: ResolutionExtensions.toJson) Resolution resolution,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime to,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime from,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime to,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime from,
       String symbol) {
     return _GetCandlesRequest(
       resolution,
@@ -46,9 +46,9 @@ const $GetCandlesRequest = _$GetCandlesRequestTearOff();
 mixin _$GetCandlesRequest {
   @JsonKey(toJson: ResolutionExtensions.toJson)
   Resolution get resolution => throw _privateConstructorUsedError;
-  @JsonKey(toJson: DateTimeHelper.toJson)
+  @JsonKey(toJson: DateTimeHelper.toUnixSeconds)
   DateTime get to => throw _privateConstructorUsedError;
-  @JsonKey(toJson: DateTimeHelper.toJson)
+  @JsonKey(toJson: DateTimeHelper.toUnixSeconds)
   DateTime get from => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
 
@@ -65,8 +65,8 @@ abstract class $GetCandlesRequestCopyWith<$Res> {
       _$GetCandlesRequestCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(toJson: ResolutionExtensions.toJson) Resolution resolution,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime to,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime from,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime to,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime from,
       String symbol});
 }
 
@@ -116,8 +116,8 @@ abstract class _$GetCandlesRequestCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(toJson: ResolutionExtensions.toJson) Resolution resolution,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime to,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime from,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime to,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime from,
       String symbol});
 }
 
@@ -166,8 +166,8 @@ class __$GetCandlesRequestCopyWithImpl<$Res>
 class _$_GetCandlesRequest extends _GetCandlesRequest {
   _$_GetCandlesRequest(
       @JsonKey(toJson: ResolutionExtensions.toJson) this.resolution,
-      @JsonKey(toJson: DateTimeHelper.toJson) this.to,
-      @JsonKey(toJson: DateTimeHelper.toJson) this.from,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) this.to,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) this.from,
       this.symbol)
       : super._();
 
@@ -178,10 +178,10 @@ class _$_GetCandlesRequest extends _GetCandlesRequest {
   @JsonKey(toJson: ResolutionExtensions.toJson)
   final Resolution resolution;
   @override
-  @JsonKey(toJson: DateTimeHelper.toJson)
+  @JsonKey(toJson: DateTimeHelper.toUnixSeconds)
   final DateTime to;
   @override
-  @JsonKey(toJson: DateTimeHelper.toJson)
+  @JsonKey(toJson: DateTimeHelper.toUnixSeconds)
   final DateTime from;
   @override
   final String symbol;
@@ -225,8 +225,8 @@ class _$_GetCandlesRequest extends _GetCandlesRequest {
 abstract class _GetCandlesRequest extends GetCandlesRequest {
   factory _GetCandlesRequest(
       @JsonKey(toJson: ResolutionExtensions.toJson) Resolution resolution,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime to,
-      @JsonKey(toJson: DateTimeHelper.toJson) DateTime from,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime to,
+      @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime from,
       String symbol) = _$_GetCandlesRequest;
   _GetCandlesRequest._() : super._();
 
@@ -237,10 +237,10 @@ abstract class _GetCandlesRequest extends GetCandlesRequest {
   @JsonKey(toJson: ResolutionExtensions.toJson)
   Resolution get resolution;
   @override
-  @JsonKey(toJson: DateTimeHelper.toJson)
+  @JsonKey(toJson: DateTimeHelper.toUnixSeconds)
   DateTime get to;
   @override
-  @JsonKey(toJson: DateTimeHelper.toJson)
+  @JsonKey(toJson: DateTimeHelper.toUnixSeconds)
   DateTime get from;
   @override
   String get symbol;

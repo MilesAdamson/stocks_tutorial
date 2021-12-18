@@ -14,8 +14,8 @@ class GetCandlesRequest with _$GetCandlesRequest {
   @JsonSerializable(explicitToJson: true)
   factory GetCandlesRequest(
     @JsonKey(toJson: ResolutionExtensions.toJson) Resolution resolution,
-    @JsonKey(toJson: DateTimeHelper.toJson) DateTime to,
-    @JsonKey(toJson: DateTimeHelper.toJson) DateTime from,
+    @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime to,
+    @JsonKey(toJson: DateTimeHelper.toUnixSeconds) DateTime from,
     String symbol,
   ) = _GetCandlesRequest;
 

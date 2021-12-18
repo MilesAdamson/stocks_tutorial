@@ -2,6 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stocks_tutorial/models/candle.dart';
+import 'package:stocks_tutorial/models/get_candles_request.dart';
 
 part 'app_state.freezed.dart';
 
@@ -13,9 +14,10 @@ class AppState with _$AppState {
     bool isLoading,
     bool hasError,
     String? errorMessage,
+    GetCandlesRequest? recentQuery,
   ) = _AppState;
 
   factory AppState.initial() {
-    return AppState([], null, false, false, null);
+    return AppState([], null, false, false, null, null);
   }
 }

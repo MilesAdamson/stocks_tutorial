@@ -20,6 +20,8 @@ class AppStateCubit extends Cubit<AppState> {
 
     try {
       final request = GetCandlesRequest(resolution, to, from, symbol);
+      emit(state.copyWith(recentQuery: request));
+
       final candles = await _api.getCandles(request);
 
       emit(state.copyWith(
