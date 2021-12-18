@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:stocks_tutorial/api/resolution.dart';
+import 'package:stocks_tutorial/components/chart.dart';
+import 'package:stocks_tutorial/models/candle.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
 import 'package:stocks_tutorial/utils/date_time_helper.dart';
 
 class SearchForm extends StatefulWidget {
-  const SearchForm({Key? key}) : super(key: key);
+  final void Function(List<Candle> candles) onSuccessfulSearch;
+
+  const SearchForm({
+    Key? key,
+    required this.onSuccessfulSearch,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => SearchFormState();
 }
 
 class SearchFormState extends State<SearchForm> {
-  static const minimumCandles = 5;
-
   final _symbolController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -42,20 +47,26 @@ class SearchFormState extends State<SearchForm> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
-            final bloc = context.read<AppStateCubit>();
-            bloc.loadCandles(
-              _symbolController.text.trim(),
-              startDate!,
-              endDate!,
-              resolution!,
-            );
-          }
-        },
+        onPressed: onSubmit,
         child: const Text("Search"),
       ),
     );
+  }
+
+  void onSubmit() async {
+    if (_formKey.currentState!.validate()) {
+      final bloc = context.read<AppStateCubit>();
+      final candles = await bloc.loadCandles(
+        _symbolController.text.trim(),
+        startDate!,
+        endDate!,
+        resolution!,
+      );
+
+      if (candles != null) {
+        widget.onSuccessfulSearch(candles);
+      }
+    }
   }
 
   FormField<DateTime> buildEndDateSelect(BuildContext context) {
@@ -171,11 +182,11 @@ class SearchFormState extends State<SearchForm> {
 
         if (datesAreSelectedAndValid) {
           final adjustedEndTime =
-              endDate!.subtract(r.duration * minimumCandles);
+              endDate!.subtract(r.duration * ChartPage.minimumCandles);
 
           if (!startDate!.isBefore(adjustedEndTime)) {
             return "You must select a wider date range, such that at"
-                " least $minimumCandles candles will appear on the chart.";
+                " least ${ChartPage.minimumCandles} candles will appear on the chart.";
           }
         }
       },

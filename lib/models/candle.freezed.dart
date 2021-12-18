@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CandleTearOff {
   const _$CandleTearOff();
 
-  _CandleViewModel call(double close, double high, double low, double open,
+  _Candle call(double close, double high, double low, double open,
       DateTime timestamp, int volume) {
-    return _CandleViewModel(
+    return _Candle(
       close,
       high,
       low,
@@ -106,11 +106,9 @@ class _$CandleCopyWithImpl<$Res> implements $CandleCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CandleViewModelCopyWith<$Res>
-    implements $CandleCopyWith<$Res> {
-  factory _$CandleViewModelCopyWith(
-          _CandleViewModel value, $Res Function(_CandleViewModel) then) =
-      __$CandleViewModelCopyWithImpl<$Res>;
+abstract class _$CandleCopyWith<$Res> implements $CandleCopyWith<$Res> {
+  factory _$CandleCopyWith(_Candle value, $Res Function(_Candle) then) =
+      __$CandleCopyWithImpl<$Res>;
   @override
   $Res call(
       {double close,
@@ -122,14 +120,13 @@ abstract class _$CandleViewModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CandleViewModelCopyWithImpl<$Res> extends _$CandleCopyWithImpl<$Res>
-    implements _$CandleViewModelCopyWith<$Res> {
-  __$CandleViewModelCopyWithImpl(
-      _CandleViewModel _value, $Res Function(_CandleViewModel) _then)
-      : super(_value, (v) => _then(v as _CandleViewModel));
+class __$CandleCopyWithImpl<$Res> extends _$CandleCopyWithImpl<$Res>
+    implements _$CandleCopyWith<$Res> {
+  __$CandleCopyWithImpl(_Candle _value, $Res Function(_Candle) _then)
+      : super(_value, (v) => _then(v as _Candle));
 
   @override
-  _CandleViewModel get _value => super._value as _CandleViewModel;
+  _Candle get _value => super._value as _Candle;
 
   @override
   $Res call({
@@ -140,7 +137,7 @@ class __$CandleViewModelCopyWithImpl<$Res> extends _$CandleCopyWithImpl<$Res>
     Object? timestamp = freezed,
     Object? volume = freezed,
   }) {
-    return _then(_CandleViewModel(
+    return _then(_Candle(
       close == freezed
           ? _value.close
           : close // ignore: cast_nullable_to_non_nullable
@@ -171,8 +168,8 @@ class __$CandleViewModelCopyWithImpl<$Res> extends _$CandleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CandleViewModel implements _CandleViewModel {
-  _$_CandleViewModel(
+class _$_Candle implements _Candle {
+  _$_Candle(
       this.close, this.high, this.low, this.open, this.timestamp, this.volume);
 
   @override
@@ -197,7 +194,7 @@ class _$_CandleViewModel implements _CandleViewModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CandleViewModel &&
+            other is _Candle &&
             const DeepCollectionEquality().equals(other.close, close) &&
             const DeepCollectionEquality().equals(other.high, high) &&
             const DeepCollectionEquality().equals(other.low, low) &&
@@ -218,13 +215,13 @@ class _$_CandleViewModel implements _CandleViewModel {
 
   @JsonKey(ignore: true)
   @override
-  _$CandleViewModelCopyWith<_CandleViewModel> get copyWith =>
-      __$CandleViewModelCopyWithImpl<_CandleViewModel>(this, _$identity);
+  _$CandleCopyWith<_Candle> get copyWith =>
+      __$CandleCopyWithImpl<_Candle>(this, _$identity);
 }
 
-abstract class _CandleViewModel implements Candle {
-  factory _CandleViewModel(double close, double high, double low, double open,
-      DateTime timestamp, int volume) = _$_CandleViewModel;
+abstract class _Candle implements Candle {
+  factory _Candle(double close, double high, double low, double open,
+      DateTime timestamp, int volume) = _$_Candle;
 
   @override
   double get close;
@@ -240,6 +237,5 @@ abstract class _CandleViewModel implements Candle {
   int get volume;
   @override
   @JsonKey(ignore: true)
-  _$CandleViewModelCopyWith<_CandleViewModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$CandleCopyWith<_Candle> get copyWith => throw _privateConstructorUsedError;
 }

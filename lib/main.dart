@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:stocks_tutorial/api/api.dart';
-import 'package:stocks_tutorial/components/home_page.dart';
+import 'package:stocks_tutorial/components/search_page.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
 
 void main() async {
@@ -33,8 +33,13 @@ class MyApp extends StatelessWidget {
       create: (_) => AppStateCubit(api),
       child: MaterialApp(
         title: 'Stonks',
-        theme: ThemeData.dark(),
-        home: const MyHomePage(),
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: AppBarTheme(
+            color: Colors.grey[900]!,
+          ),
+        ),
+        home: const SearchPage(),
       ),
     );
   }

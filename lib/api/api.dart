@@ -34,7 +34,7 @@ class Api {
 
       // Why is this not a 404? Or just empty lists?
       if (response.data?["s"] == "no_data") {
-        return [];
+        throw ApiException("No data could be found for your request");
       }
 
       final candlesPayload = CandlesPayload.fromJson(response.data!);
