@@ -21,6 +21,9 @@ class ChartPage extends StatefulWidget {
 class ChartPageState extends State<ChartPage> {
   static const padding = 0.05;
 
+  bool get shouldShowAppBar =>
+      MediaQuery.of(context).orientation == Orientation.portrait;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppStateCubit, AppState>(builder: (context, state) {
@@ -30,9 +33,11 @@ class ChartPageState extends State<ChartPage> {
       final plotMinimum = candles.min * (1 - padding);
 
       return Scaffold(
-        appBar: AppBar(
-          title: Text(recentQuery.symbol),
-        ),
+        appBar: shouldShowAppBar
+            ? AppBar(
+                title: Text(recentQuery.symbol),
+              )
+            : null,
         body: Builder(builder: (context) {
           if (state.isLoading) {
             final color = Theme.of(context).scaffoldBackgroundColor;
