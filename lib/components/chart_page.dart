@@ -41,13 +41,7 @@ class ChartPageState extends State<ChartPage> {
           interval: 1,
         ),
         series: <ChartSeries<Candle, DateTime>>[
-          BoxAndWhiskerSeries<Candle, DateTime>(
-            dataSource: widget.candles,
-            xValueMapper: (candle, _) => candle.timestamp,
-            yValueMapper: (candle, _) => candle.spread,
-            name: 'Gold',
-            color: const Color.fromRGBO(8, 142, 255, 1),
-          )
+          widget.candles.candleSeries,
         ],
       ),
     );
