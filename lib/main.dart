@@ -33,9 +33,7 @@ class MyApp extends StatelessWidget {
       create: (_) => AppStateCubit(api),
       child: MaterialApp(
         title: 'Stonks',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData.dark(),
         home: const MyHomePage(),
       ),
     );
