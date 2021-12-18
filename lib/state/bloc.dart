@@ -28,6 +28,9 @@ class AppStateCubit extends Cubit<AppState> {
         isLoading: false,
         candles: candles,
         currentSymbol: symbol,
+        errorMessage:
+            candles.isEmpty ? "No data could be found for your request" : null,
+        hasError: candles.isEmpty,
       ));
 
       return candles;

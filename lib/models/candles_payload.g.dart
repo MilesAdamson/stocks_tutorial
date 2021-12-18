@@ -8,12 +8,27 @@ part of 'candles_payload.dart';
 
 _$_CandlesPayload _$$_CandlesPayloadFromJson(Map<String, dynamic> json) =>
     _$_CandlesPayload(
-      (json['c'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
-      (json['h'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
-      (json['l'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
-      (json['o'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
-      (json['t'] as List<dynamic>).map((e) => e as int).toList(),
-      (json['v'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
+      (json['c'] as List<dynamic>?)
+              ?.map((e) => (e as num).toDouble())
+              .toList() ??
+          [],
+      (json['h'] as List<dynamic>?)
+              ?.map((e) => (e as num).toDouble())
+              .toList() ??
+          [],
+      (json['l'] as List<dynamic>?)
+              ?.map((e) => (e as num).toDouble())
+              .toList() ??
+          [],
+      (json['o'] as List<dynamic>?)
+              ?.map((e) => (e as num).toDouble())
+              .toList() ??
+          [],
+      (json['t'] as List<dynamic>?)?.map((e) => e as int).toList() ?? [],
+      (json['v'] as List<dynamic>?)
+              ?.map((e) => (e as num).toDouble())
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$_CandlesPayloadToJson(_$_CandlesPayload instance) =>

@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:stocks_tutorial/api/resolution.dart';
 import 'package:stocks_tutorial/components/chart_page.dart';
-import 'package:stocks_tutorial/models/candle.dart';
 import 'package:stocks_tutorial/models/get_candles_request.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
 import 'package:stocks_tutorial/utils/date_time_helper.dart';
 
 class SearchForm extends StatefulWidget {
-  final void Function(List<Candle> candles) onSuccessfulSearch;
-
   const SearchForm({
     Key? key,
-    required this.onSuccessfulSearch,
   }) : super(key: key);
 
   @override
@@ -61,16 +57,17 @@ class SearchFormState extends State<SearchForm> {
   void onSubmit() async {
     if (_formKey.currentState!.validate()) {
       final bloc = context.read<AppStateCubit>();
-      final candles = await bloc.loadCandles(
+      bloc.loadCandles(
         _symbolController.text.trim(),
         startDate!,
         endDate!,
         resolution!,
       );
 
-      if (candles != null) {
-        widget.onSuccessfulSearch(candles);
-      }
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ChartPage()),
+      );
     }
   }
 

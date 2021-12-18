@@ -32,16 +32,11 @@ class Api {
         queryParameters: request.toJson(),
       );
 
-      // Why is this not a 404? Or just empty lists?
-      if (response.data?["s"] == "no_data") {
-        throw ApiException("No data could be found for your request");
-      }
-
       final candlesPayload = CandlesPayload.fromJson(response.data!);
       return candlesPayload.toCandles();
     } catch (e, s) {
       debugPrint("$e\n$s");
-      throw ApiException();
+      throw ApiException("An unknown error occurred");
     }
   }
 }
@@ -49,5 +44,5 @@ class Api {
 class ApiException {
   final String message;
 
-  ApiException([this.message = "An unknown error occurred"]);
+  ApiException(this.message);
 }

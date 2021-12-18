@@ -22,12 +22,12 @@ class _$CandlesPayloadTearOff {
   const _$CandlesPayloadTearOff();
 
   _CandlesPayload call(
-      @JsonKey(name: 'c') List<double> close,
-      @JsonKey(name: 'h') List<double> high,
-      @JsonKey(name: 'l') List<double> low,
-      @JsonKey(name: 'o') List<double> open,
-      @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<double> volume) {
+      @JsonKey(name: 'c', defaultValue: []) List<double> close,
+      @JsonKey(name: 'h', defaultValue: []) List<double> high,
+      @JsonKey(name: 'l', defaultValue: []) List<double> low,
+      @JsonKey(name: 'o', defaultValue: []) List<double> open,
+      @JsonKey(name: 't', defaultValue: []) List<int> unixTimestamp,
+      @JsonKey(name: 'v', defaultValue: []) List<double> volume) {
     return _CandlesPayload(
       close,
       high,
@@ -48,17 +48,17 @@ const $CandlesPayload = _$CandlesPayloadTearOff();
 
 /// @nodoc
 mixin _$CandlesPayload {
-  @JsonKey(name: 'c')
+  @JsonKey(name: 'c', defaultValue: [])
   List<double> get close => throw _privateConstructorUsedError;
-  @JsonKey(name: 'h')
+  @JsonKey(name: 'h', defaultValue: [])
   List<double> get high => throw _privateConstructorUsedError;
-  @JsonKey(name: 'l')
+  @JsonKey(name: 'l', defaultValue: [])
   List<double> get low => throw _privateConstructorUsedError;
-  @JsonKey(name: 'o')
+  @JsonKey(name: 'o', defaultValue: [])
   List<double> get open => throw _privateConstructorUsedError;
-  @JsonKey(name: 't')
+  @JsonKey(name: 't', defaultValue: [])
   List<int> get unixTimestamp => throw _privateConstructorUsedError;
-  @JsonKey(name: 'v')
+  @JsonKey(name: 'v', defaultValue: [])
   List<double> get volume => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,12 +73,12 @@ abstract class $CandlesPayloadCopyWith<$Res> {
           CandlesPayload value, $Res Function(CandlesPayload) then) =
       _$CandlesPayloadCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'c') List<double> close,
-      @JsonKey(name: 'h') List<double> high,
-      @JsonKey(name: 'l') List<double> low,
-      @JsonKey(name: 'o') List<double> open,
-      @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<double> volume});
+      {@JsonKey(name: 'c', defaultValue: []) List<double> close,
+      @JsonKey(name: 'h', defaultValue: []) List<double> high,
+      @JsonKey(name: 'l', defaultValue: []) List<double> low,
+      @JsonKey(name: 'o', defaultValue: []) List<double> open,
+      @JsonKey(name: 't', defaultValue: []) List<int> unixTimestamp,
+      @JsonKey(name: 'v', defaultValue: []) List<double> volume});
 }
 
 /// @nodoc
@@ -136,12 +136,12 @@ abstract class _$CandlesPayloadCopyWith<$Res>
       __$CandlesPayloadCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'c') List<double> close,
-      @JsonKey(name: 'h') List<double> high,
-      @JsonKey(name: 'l') List<double> low,
-      @JsonKey(name: 'o') List<double> open,
-      @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<double> volume});
+      {@JsonKey(name: 'c', defaultValue: []) List<double> close,
+      @JsonKey(name: 'h', defaultValue: []) List<double> high,
+      @JsonKey(name: 'l', defaultValue: []) List<double> low,
+      @JsonKey(name: 'o', defaultValue: []) List<double> open,
+      @JsonKey(name: 't', defaultValue: []) List<int> unixTimestamp,
+      @JsonKey(name: 'v', defaultValue: []) List<double> volume});
 }
 
 /// @nodoc
@@ -198,34 +198,34 @@ class __$CandlesPayloadCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_CandlesPayload extends _CandlesPayload {
   _$_CandlesPayload(
-      @JsonKey(name: 'c') this.close,
-      @JsonKey(name: 'h') this.high,
-      @JsonKey(name: 'l') this.low,
-      @JsonKey(name: 'o') this.open,
-      @JsonKey(name: 't') this.unixTimestamp,
-      @JsonKey(name: 'v') this.volume)
+      @JsonKey(name: 'c', defaultValue: []) this.close,
+      @JsonKey(name: 'h', defaultValue: []) this.high,
+      @JsonKey(name: 'l', defaultValue: []) this.low,
+      @JsonKey(name: 'o', defaultValue: []) this.open,
+      @JsonKey(name: 't', defaultValue: []) this.unixTimestamp,
+      @JsonKey(name: 'v', defaultValue: []) this.volume)
       : super._();
 
   factory _$_CandlesPayload.fromJson(Map<String, dynamic> json) =>
       _$$_CandlesPayloadFromJson(json);
 
   @override
-  @JsonKey(name: 'c')
+  @JsonKey(name: 'c', defaultValue: [])
   final List<double> close;
   @override
-  @JsonKey(name: 'h')
+  @JsonKey(name: 'h', defaultValue: [])
   final List<double> high;
   @override
-  @JsonKey(name: 'l')
+  @JsonKey(name: 'l', defaultValue: [])
   final List<double> low;
   @override
-  @JsonKey(name: 'o')
+  @JsonKey(name: 'o', defaultValue: [])
   final List<double> open;
   @override
-  @JsonKey(name: 't')
+  @JsonKey(name: 't', defaultValue: [])
   final List<int> unixTimestamp;
   @override
-  @JsonKey(name: 'v')
+  @JsonKey(name: 'v', defaultValue: [])
   final List<double> volume;
 
   @override
@@ -270,34 +270,35 @@ class _$_CandlesPayload extends _CandlesPayload {
 
 abstract class _CandlesPayload extends CandlesPayload {
   factory _CandlesPayload(
-      @JsonKey(name: 'c') List<double> close,
-      @JsonKey(name: 'h') List<double> high,
-      @JsonKey(name: 'l') List<double> low,
-      @JsonKey(name: 'o') List<double> open,
-      @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<double> volume) = _$_CandlesPayload;
+          @JsonKey(name: 'c', defaultValue: []) List<double> close,
+          @JsonKey(name: 'h', defaultValue: []) List<double> high,
+          @JsonKey(name: 'l', defaultValue: []) List<double> low,
+          @JsonKey(name: 'o', defaultValue: []) List<double> open,
+          @JsonKey(name: 't', defaultValue: []) List<int> unixTimestamp,
+          @JsonKey(name: 'v', defaultValue: []) List<double> volume) =
+      _$_CandlesPayload;
   _CandlesPayload._() : super._();
 
   factory _CandlesPayload.fromJson(Map<String, dynamic> json) =
       _$_CandlesPayload.fromJson;
 
   @override
-  @JsonKey(name: 'c')
+  @JsonKey(name: 'c', defaultValue: [])
   List<double> get close;
   @override
-  @JsonKey(name: 'h')
+  @JsonKey(name: 'h', defaultValue: [])
   List<double> get high;
   @override
-  @JsonKey(name: 'l')
+  @JsonKey(name: 'l', defaultValue: [])
   List<double> get low;
   @override
-  @JsonKey(name: 'o')
+  @JsonKey(name: 'o', defaultValue: [])
   List<double> get open;
   @override
-  @JsonKey(name: 't')
+  @JsonKey(name: 't', defaultValue: [])
   List<int> get unixTimestamp;
   @override
-  @JsonKey(name: 'v')
+  @JsonKey(name: 'v', defaultValue: [])
   List<double> get volume;
   @override
   @JsonKey(ignore: true)

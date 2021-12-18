@@ -12,12 +12,12 @@ class CandlesPayload with _$CandlesPayload {
 
   @JsonSerializable(explicitToJson: true)
   factory CandlesPayload(
-    @JsonKey(name: 'c') List<double> close,
-    @JsonKey(name: 'h') List<double> high,
-    @JsonKey(name: 'l') List<double> low,
-    @JsonKey(name: 'o') List<double> open,
-    @JsonKey(name: 't') List<int> unixTimestamp,
-    @JsonKey(name: 'v') List<double> volume,
+    @JsonKey(name: 'c', defaultValue: []) List<double> close,
+    @JsonKey(name: 'h', defaultValue: []) List<double> high,
+    @JsonKey(name: 'l', defaultValue: []) List<double> low,
+    @JsonKey(name: 'o', defaultValue: []) List<double> open,
+    @JsonKey(name: 't', defaultValue: []) List<int> unixTimestamp,
+    @JsonKey(name: 'v', defaultValue: []) List<double> volume,
   ) = _CandlesPayload;
 
   factory CandlesPayload.fromJson(Map<String, dynamic> json) =>
