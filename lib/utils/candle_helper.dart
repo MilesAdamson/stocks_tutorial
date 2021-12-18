@@ -19,4 +19,10 @@ extension CandleHelper on List<Candle> {
       bullColor: Colors.green,
     );
   }
+
+  double interval(bool isPortrait) {
+    final desiredLines = isPortrait ? 20 : 10;
+    final plotHeight = max - min;
+    return (plotHeight / desiredLines).roundToDouble();
+  }
 }

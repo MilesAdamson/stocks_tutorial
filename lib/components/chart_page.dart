@@ -21,19 +21,15 @@ class ChartPage extends StatefulWidget {
 class ChartPageState extends State<ChartPage> {
   static const padding = 0.05;
 
-  bool get shouldShowAppBar =>
+  bool get isPortrait =>
       MediaQuery.of(context).orientation == Orientation.portrait;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppStateCubit, AppState>(builder: (context, state) {
       final recentQuery = state.recentQuery!;
-      final candles = state.candles;
-      final plotMaximum = candles.max * (1 + padding);
-      final plotMinimum = candles.min * (1 - padding);
-
       return Scaffold(
-        appBar: shouldShowAppBar
+        appBar: isPortrait
             ? AppBar(
                 title: Text(recentQuery.symbol),
               )
@@ -69,12 +65,14 @@ class ChartPageState extends State<ChartPage> {
             );
           }
 
+          final candles = state.candles;
+
           return SfCartesianChart(
             primaryXAxis: DateTimeAxis(),
             primaryYAxis: NumericAxis(
-              minimum: plotMinimum.roundToDouble(),
-              maximum: plotMaximum.roundToDouble(),
-              interval: 1,
+              minimum: candles.min.roundToDouble(),
+              maximum: candles.max.roundToDouble(),
+              interval: candles.interval(isPortrait),
             ),
             series: <ChartSeries<Candle, DateTime>>[
               candles.candleSeries,
