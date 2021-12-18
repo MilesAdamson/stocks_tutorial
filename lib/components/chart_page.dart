@@ -22,10 +22,10 @@ class ChartPage extends StatefulWidget {
 class ChartPageState extends State<ChartPage> {
   static const padding = 0.05;
 
-  late final dataMaximum = widget.candles.max;
-  late final dataMinimum = widget.candles.min;
-  late final plotMaximum = dataMaximum * (1 + padding);
-  late final plotMinimum = dataMinimum * (1 - padding);
+  late final double dataMaximum = widget.candles.max;
+  late final double dataMinimum = widget.candles.min;
+  late final double plotMaximum = dataMaximum * (1 + padding);
+  late final double plotMinimum = dataMinimum * (1 - padding);
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,8 @@ class ChartPageState extends State<ChartPage> {
       body: SfCartesianChart(
         primaryXAxis: CategoryAxis(),
         primaryYAxis: NumericAxis(
-          minimum: plotMinimum,
-          maximum: plotMaximum,
+          minimum: plotMinimum.roundToDouble(),
+          maximum: plotMaximum.roundToDouble(),
           interval: 1,
         ),
         series: <ChartSeries<Candle, DateTime>>[
