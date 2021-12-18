@@ -10,7 +10,7 @@ class Api {
 
   static Dio buildDefaultHttpClient(String apiKey) {
     final dio = Dio();
-    dio.options.baseUrl = "https://finnhub.io/api/";
+    dio.options.baseUrl = "https://finnhub.io/api";
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         options.queryParameters.addAll({
@@ -27,7 +27,7 @@ class Api {
   Future<List<Candle>> getCandles(GetCandlesRequest request) async {
     try {
       final response = await _dio.get<Map<String, dynamic>>(
-        "v1/stock/candle",
+        "/v1/stock/candle",
         queryParameters: request.toJson(),
       );
 
