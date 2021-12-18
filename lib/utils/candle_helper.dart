@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:stocks_tutorial/models/candle.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -14,6 +15,8 @@ extension CandleHelper on List<Candle> {
       highValueMapper: (c, _) => c.high,
       closeValueMapper: (c, _) => c.close,
       lowValueMapper: (c, _) => c.low,
+      bearColor: Colors.red,
+      bullColor: Colors.green,
     );
   }
 }

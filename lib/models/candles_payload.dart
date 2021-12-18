@@ -28,23 +28,15 @@ class CandlesPayload with _$CandlesPayload {
   List<Candle> toCandles() {
     final candles = <Candle>[];
     assert(
-      [
-        close.length,
-        high.length,
-        low.length,
-        open.length,
-        unixTimestamp.length,
-        volume.length,
-      ].every(
-        (length) => [
-          close.length,
-          high.length,
-          low.length,
-          open.length,
-          unixTimestamp.length,
-          volume.length
-        ].every((len) => len == length),
-      ),
+      {
+            close.length,
+            high.length,
+            low.length,
+            open.length,
+            unixTimestamp.length,
+            volume.length,
+          }.length ==
+          1,
       "All data sets must be the same length",
     );
 
@@ -54,7 +46,7 @@ class CandlesPayload with _$CandlesPayload {
         high[i],
         low[i],
         open[i],
-        DateTime.fromMillisecondsSinceEpoch(unixTimestamp[i]),
+        DateTime.fromMillisecondsSinceEpoch(unixTimestamp[i] * 1000),
         volume[i],
       ));
     }

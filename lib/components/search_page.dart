@@ -78,8 +78,6 @@ class SearchPageState extends State<SearchPage> {
                   colors: const [
                     Colors.red,
                     Colors.green,
-                    Colors.blue,
-                    Colors.yellow,
                   ],
                 ),
               ),
@@ -94,6 +92,12 @@ class SearchPageState extends State<SearchPage> {
                   MaterialPageRoute(
                     builder: (context) => ChartPage(
                       candles: candles,
+                      symbol: context
+                          .read<AppStateCubit>()
+                          .state
+                          .recentQuery!
+                          .symbol
+                          .toUpperCase(),
                     ),
                   ),
                 );

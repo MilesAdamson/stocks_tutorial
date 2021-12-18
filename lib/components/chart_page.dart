@@ -7,10 +7,12 @@ class ChartPage extends StatefulWidget {
   static const minimumCandles = 5;
 
   final List<Candle> candles;
+  final String symbol;
 
   ChartPage({
     Key? key,
     required this.candles,
+    required this.symbol,
   }) : super(key: key) {
     assert(candles.length >= minimumCandles);
   }
@@ -31,10 +33,10 @@ class ChartPageState extends State<ChartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Syncfusion Flutter chart'),
+        title: Text(widget.symbol),
       ),
       body: SfCartesianChart(
-        primaryXAxis: CategoryAxis(),
+        primaryXAxis: DateTimeAxis(),
         primaryYAxis: NumericAxis(
           minimum: plotMinimum.roundToDouble(),
           maximum: plotMaximum.roundToDouble(),
