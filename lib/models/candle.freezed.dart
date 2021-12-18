@@ -18,7 +18,7 @@ class _$CandleTearOff {
   const _$CandleTearOff();
 
   _Candle call(double close, double high, double low, double open,
-      DateTime timestamp, int volume) {
+      DateTime timestamp, double volume) {
     return _Candle(
       close,
       high,
@@ -40,7 +40,7 @@ mixin _$Candle {
   double get low => throw _privateConstructorUsedError;
   double get open => throw _privateConstructorUsedError;
   DateTime get timestamp => throw _privateConstructorUsedError;
-  int get volume => throw _privateConstructorUsedError;
+  double get volume => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CandleCopyWith<Candle> get copyWith => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ abstract class $CandleCopyWith<$Res> {
       double low,
       double open,
       DateTime timestamp,
-      int volume});
+      double volume});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$CandleCopyWithImpl<$Res> implements $CandleCopyWith<$Res> {
       volume: volume == freezed
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ));
   }
 }
@@ -116,7 +116,7 @@ abstract class _$CandleCopyWith<$Res> implements $CandleCopyWith<$Res> {
       double low,
       double open,
       DateTime timestamp,
-      int volume});
+      double volume});
 }
 
 /// @nodoc
@@ -161,7 +161,7 @@ class __$CandleCopyWithImpl<$Res> extends _$CandleCopyWithImpl<$Res>
       volume == freezed
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ));
   }
 }
@@ -184,7 +184,7 @@ class _$_Candle extends _Candle {
   @override
   final DateTime timestamp;
   @override
-  final int volume;
+  final double volume;
 
   @override
   String toString() {
@@ -222,7 +222,7 @@ class _$_Candle extends _Candle {
 
 abstract class _Candle extends Candle {
   factory _Candle(double close, double high, double low, double open,
-      DateTime timestamp, int volume) = _$_Candle;
+      DateTime timestamp, double volume) = _$_Candle;
   _Candle._() : super._();
 
   @override
@@ -236,7 +236,7 @@ abstract class _Candle extends Candle {
   @override
   DateTime get timestamp;
   @override
-  int get volume;
+  double get volume;
   @override
   @JsonKey(ignore: true)
   _$CandleCopyWith<_Candle> get copyWith => throw _privateConstructorUsedError;

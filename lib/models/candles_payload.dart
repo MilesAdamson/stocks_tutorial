@@ -17,7 +17,7 @@ class CandlesPayload with _$CandlesPayload {
     @JsonKey(name: 'l') List<double> low,
     @JsonKey(name: 'o') List<double> open,
     @JsonKey(name: 't') List<int> unixTimestamp,
-    @JsonKey(name: 'v') List<int> volume,
+    @JsonKey(name: 'v') List<double> volume,
   ) = _CandlesPayload;
 
   factory CandlesPayload.fromJson(Map<String, dynamic> json) =>

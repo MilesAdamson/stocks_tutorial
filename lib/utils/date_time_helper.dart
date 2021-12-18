@@ -1,6 +1,8 @@
 import 'package:intl/intl.dart';
 
 class DateTimeHelper {
+  // They invented iso timestamps for a reason..
+  // but ok lets use SECONDS since epoch for the api
   static int toJson(DateTime dateTime) =>
       (dateTime.millisecondsSinceEpoch / 1000).truncate();
 

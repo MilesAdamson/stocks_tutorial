@@ -13,7 +13,7 @@ class Candle with _$Candle {
     double low,
     double open,
     DateTime timestamp,
-    int volume,
+    double volume,
   ) = _Candle;
 
   List<double> get spread => [low, close, open, high];

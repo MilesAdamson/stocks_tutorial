@@ -27,7 +27,7 @@ class _$CandlesPayloadTearOff {
       @JsonKey(name: 'l') List<double> low,
       @JsonKey(name: 'o') List<double> open,
       @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<int> volume) {
+      @JsonKey(name: 'v') List<double> volume) {
     return _CandlesPayload(
       close,
       high,
@@ -59,7 +59,7 @@ mixin _$CandlesPayload {
   @JsonKey(name: 't')
   List<int> get unixTimestamp => throw _privateConstructorUsedError;
   @JsonKey(name: 'v')
-  List<int> get volume => throw _privateConstructorUsedError;
+  List<double> get volume => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,7 +78,7 @@ abstract class $CandlesPayloadCopyWith<$Res> {
       @JsonKey(name: 'l') List<double> low,
       @JsonKey(name: 'o') List<double> open,
       @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<int> volume});
+      @JsonKey(name: 'v') List<double> volume});
 }
 
 /// @nodoc
@@ -123,7 +123,7 @@ class _$CandlesPayloadCopyWithImpl<$Res>
       volume: volume == freezed
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<double>,
     ));
   }
 }
@@ -141,7 +141,7 @@ abstract class _$CandlesPayloadCopyWith<$Res>
       @JsonKey(name: 'l') List<double> low,
       @JsonKey(name: 'o') List<double> open,
       @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<int> volume});
+      @JsonKey(name: 'v') List<double> volume});
 }
 
 /// @nodoc
@@ -188,7 +188,7 @@ class __$CandlesPayloadCopyWithImpl<$Res>
       volume == freezed
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<double>,
     ));
   }
 }
@@ -226,7 +226,7 @@ class _$_CandlesPayload extends _CandlesPayload {
   final List<int> unixTimestamp;
   @override
   @JsonKey(name: 'v')
-  final List<int> volume;
+  final List<double> volume;
 
   @override
   String toString() {
@@ -275,7 +275,7 @@ abstract class _CandlesPayload extends CandlesPayload {
       @JsonKey(name: 'l') List<double> low,
       @JsonKey(name: 'o') List<double> open,
       @JsonKey(name: 't') List<int> unixTimestamp,
-      @JsonKey(name: 'v') List<int> volume) = _$_CandlesPayload;
+      @JsonKey(name: 'v') List<double> volume) = _$_CandlesPayload;
   _CandlesPayload._() : super._();
 
   factory _CandlesPayload.fromJson(Map<String, dynamic> json) =
@@ -298,7 +298,7 @@ abstract class _CandlesPayload extends CandlesPayload {
   List<int> get unixTimestamp;
   @override
   @JsonKey(name: 'v')
-  List<int> get volume;
+  List<double> get volume;
   @override
   @JsonKey(ignore: true)
   _$CandlesPayloadCopyWith<_CandlesPayload> get copyWith =>

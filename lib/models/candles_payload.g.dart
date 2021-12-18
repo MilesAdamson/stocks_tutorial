@@ -13,7 +13,7 @@ _$_CandlesPayload _$$_CandlesPayloadFromJson(Map<String, dynamic> json) =>
       (json['l'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
       (json['o'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
       (json['t'] as List<dynamic>).map((e) => e as int).toList(),
-      (json['v'] as List<dynamic>).map((e) => e as int).toList(),
+      (json['v'] as List<dynamic>).map((e) => (e as num).toDouble()).toList(),
     );
 
 Map<String, dynamic> _$$_CandlesPayloadToJson(_$_CandlesPayload instance) =>
