@@ -14,9 +14,18 @@ class AppStateCubit extends Cubit<AppState> {
     String symbol,
     DateTime from,
     DateTime to,
-    Resolution resolution,
   ) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+
+    // Find the first resolution which results in less than 100 candles
+    final resolution = Resolution.values.firstWhere(
+      (r) {
+        final ms = to.millisecondsSinceEpoch - from.millisecondsSinceEpoch;
+        final resultingCandles = ms / r.duration.inMilliseconds;
+        return resultingCandles < 100;
+      },
+      orElse: () => Resolution.month,
+    );
 
     try {
       final request = GetCandlesRequest(resolution, to, from, symbol);

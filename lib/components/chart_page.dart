@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import 'package:stocks_tutorial/api/resolution.dart';
 import 'package:stocks_tutorial/models/candle.dart';
+import 'package:stocks_tutorial/models/get_candles_request.dart';
 import 'package:stocks_tutorial/state/app_state.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
 import 'package:stocks_tutorial/utils/candle_helper.dart';
@@ -24,6 +26,9 @@ class ChartPageState extends State<ChartPage> {
   bool get isPortrait =>
       MediaQuery.of(context).orientation == Orientation.portrait;
 
+  String appBarTitle(GetCandlesRequest recentQuery) =>
+      "${recentQuery.symbol.toUpperCase()} ${recentQuery.resolution.label.toLowerCase()} chart";
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppStateCubit, AppState>(builder: (context, state) {
@@ -31,7 +36,7 @@ class ChartPageState extends State<ChartPage> {
       return Scaffold(
         appBar: isPortrait
             ? AppBar(
-                title: Text(recentQuery.symbol),
+                title: Text(appBarTitle(recentQuery)),
               )
             : null,
         body: Builder(builder: (context) {

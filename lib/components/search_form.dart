@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
-import 'package:stocks_tutorial/api/resolution.dart';
 import 'package:stocks_tutorial/components/chart_page.dart';
 import 'package:stocks_tutorial/models/get_candles_request.dart';
 import 'package:stocks_tutorial/state/bloc.dart';
@@ -21,7 +20,6 @@ class SearchFormState extends State<SearchForm> {
   late final GetCandlesRequest? recentQuery =
       context.read<AppStateCubit>().state.recentQuery;
 
-  late Resolution? resolution = recentQuery?.resolution;
   late DateTime? startDate = recentQuery?.from;
   late DateTime? endDate = recentQuery?.to;
   late final _symbolController =
@@ -36,7 +34,6 @@ class SearchFormState extends State<SearchForm> {
           buildSymbolEntry(),
           buildStartDateSelect(context),
           buildEndDateSelect(context),
-          buildResolutionSelector(),
           buildSubmitButton(),
         ],
       ),
@@ -61,7 +58,6 @@ class SearchFormState extends State<SearchForm> {
         _symbolController.text.trim(),
         startDate!,
         endDate!,
-        resolution!,
       );
 
       Navigator.push(
@@ -170,58 +166,6 @@ class SearchFormState extends State<SearchForm> {
           }
         },
       ),
-    );
-  }
-
-  FormField<Resolution> buildResolutionSelector() {
-    return FormField<Resolution>(
-      initialValue: resolution,
-      validator: (r) {
-        if (r == null) {
-          return "Resolution is required";
-        }
-
-        bool datesAreSelectedAndValid = endDate != null &&
-            startDate != null &&
-            endDate!.isAfter(startDate!);
-
-        if (datesAreSelectedAndValid) {
-          final adjustedEndTime =
-              endDate!.subtract(r.duration * ChartPage.minimumCandles);
-
-          if (!startDate!.isBefore(adjustedEndTime)) {
-            return "You must select a wider date range, such that at"
-                " least ${ChartPage.minimumCandles} candles will appear on the chart.";
-          }
-        }
-      },
-      builder: (field) {
-        final textColor = field.hasError ? Colors.red : null;
-
-        return Column(
-          children: [
-            ListTile(
-              title: Text(
-                "Resolution",
-                style: TextStyle(color: textColor),
-              ),
-              subtitle: Text(field.errorText ??
-                  "This is how much time each candle will represent on the stock's chart."),
-            ),
-            ...Resolution.values.map(
-              (r) => RadioListTile<Resolution>(
-                value: r,
-                title: Text(r.label),
-                groupValue: resolution,
-                onChanged: (r) {
-                  setState(() => resolution = r);
-                  field.didChange(r);
-                },
-              ),
-            ),
-          ],
-        );
-      },
     );
   }
 }
