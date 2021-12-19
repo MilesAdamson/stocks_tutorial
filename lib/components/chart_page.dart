@@ -21,7 +21,7 @@ class ChartPage extends StatefulWidget {
 }
 
 class ChartPageState extends State<ChartPage> {
-  static const padding = 0.05;
+  static const padding = 0.015;
 
   bool get isPortrait =>
       MediaQuery.of(context).orientation == Orientation.portrait;
@@ -73,14 +73,14 @@ class ChartPageState extends State<ChartPage> {
           final candles = state.candles;
 
           return SfCartesianChart(
-            primaryXAxis: DateTimeAxis(),
+            primaryXAxis: CategoryAxis(),
             primaryYAxis: NumericAxis(
-              minimum: candles.min.roundToDouble(),
-              maximum: candles.max.roundToDouble(),
+              minimum: (candles.min * (1 - padding)).roundToDouble(),
+              maximum: (candles.max * (1 + padding)).roundToDouble(),
               interval: candles.interval(isPortrait),
             ),
-            series: <ChartSeries<Candle, DateTime>>[
-              candles.candleSeries,
+            series: <ChartSeries<Candle, String>>[
+              candles.candleSeries(recentQuery.resolution),
             ],
           );
         }),

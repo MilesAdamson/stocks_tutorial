@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stocks_tutorial/api/resolution.dart';
 import 'package:stocks_tutorial/models/candle.dart';
+import 'package:stocks_tutorial/utils/date_time_helper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 extension CandleHelper on List<Candle> {
@@ -7,9 +9,9 @@ extension CandleHelper on List<Candle> {
 
   double get min => fold(double.infinity, (a, b) => a < b.low ? a : b.low);
 
-  CandleSeries<Candle, DateTime> get candleSeries {
-    return CandleSeries<Candle, DateTime>(
-      xValueMapper: (c, _) => c.timestamp,
+  CandleSeries<Candle, String> candleSeries(Resolution resolution) {
+    return CandleSeries<Candle, String>(
+      xValueMapper: (c, _) => c.timestamp.formatFromResolution(resolution),
       dataSource: this,
       openValueMapper: (c, _) => c.open,
       highValueMapper: (c, _) => c.high,
