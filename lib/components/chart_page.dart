@@ -22,8 +22,6 @@ class ChartPage extends StatefulWidget {
 }
 
 class ChartPageState extends State<ChartPage> {
-  static const padding = 0.015;
-
   bool get isPortrait =>
       MediaQuery.of(context).orientation == Orientation.portrait;
 
