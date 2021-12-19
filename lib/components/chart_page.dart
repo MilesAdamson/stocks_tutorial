@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:stocks_tutorial/api/resolution.dart';
@@ -28,6 +29,18 @@ class ChartPageState extends State<ChartPage> {
 
   String appBarTitle(GetCandlesRequest recentQuery) =>
       "${recentQuery.symbol.toUpperCase()} ${recentQuery.resolution.label.toLowerCase()} chart";
+
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,16 +85,19 @@ class ChartPageState extends State<ChartPage> {
 
           final candles = state.candles;
 
-          return SfCartesianChart(
-            primaryXAxis: CategoryAxis(),
-            primaryYAxis: NumericAxis(
-              minimum: candles.minimumPlotValue,
-              maximum: candles.maximumPlotValue,
-              interval: candles.interval(isPortrait),
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SfCartesianChart(
+              primaryXAxis: CategoryAxis(),
+              primaryYAxis: NumericAxis(
+                minimum: candles.minimumPlotValue,
+                maximum: candles.maximumPlotValue,
+                interval: candles.interval(isPortrait),
+              ),
+              series: <ChartSeries<Candle, String>>[
+                candles.candleSeries(recentQuery.resolution),
+              ],
             ),
-            series: <ChartSeries<Candle, String>>[
-              candles.candleSeries(recentQuery.resolution),
-            ],
           );
         }),
       );
