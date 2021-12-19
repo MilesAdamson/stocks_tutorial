@@ -29,17 +29,4 @@ extension CandleHelper on List<Candle> {
     final plotHeight = max - min;
     return (plotHeight / desiredLines).roundToDouble();
   }
-
-  List<Candle> trimForPerformance(
-    bool isPortrait, {
-    approximateMaxLength = 1000,
-  }) {
-    var result = List<Candle>.from(this);
-    final overFlowFactor = (length / approximateMaxLength).truncate();
-
-    result =
-        result.where((c) => result.indexOf(c) % overFlowFactor == 0).toList();
-
-    return result;
-  }
 }

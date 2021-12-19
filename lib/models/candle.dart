@@ -7,6 +7,7 @@ part 'candle.freezed.dart';
 @freezed
 class Candle with _$Candle {
   Candle._();
+
   factory Candle(
     double close,
     double high,
@@ -15,6 +16,4 @@ class Candle with _$Candle {
     DateTime timestamp,
     double volume,
   ) = _Candle;
-
-  List<double> get spread => [low, close, open, high];
 }
