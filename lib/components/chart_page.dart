@@ -75,8 +75,8 @@ class ChartPageState extends State<ChartPage> {
           return SfCartesianChart(
             primaryXAxis: CategoryAxis(),
             primaryYAxis: NumericAxis(
-              minimum: (candles.min * (1 - padding)).roundToDouble(),
-              maximum: (candles.max * (1 + padding)).roundToDouble(),
+              minimum: candles.minimumPlotValue,
+              maximum: candles.maximumPlotValue,
               interval: candles.interval(isPortrait),
             ),
             series: <ChartSeries<Candle, String>>[

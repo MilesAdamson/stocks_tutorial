@@ -5,9 +5,15 @@ import 'package:stocks_tutorial/utils/date_time_helper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 extension CandleHelper on List<Candle> {
+  static const padding = 0.015;
+
   double get max => fold(-double.infinity, (a, b) => a > b.high ? a : b.high);
 
   double get min => fold(double.infinity, (a, b) => a < b.low ? a : b.low);
+
+  double get minimumPlotValue => (min * (1 - padding)).roundToDouble();
+
+  double get maximumPlotValue => (max * (1 + padding)).roundToDouble();
 
   CandleSeries<Candle, String> candleSeries(Resolution resolution) {
     return CandleSeries<Candle, String>(
