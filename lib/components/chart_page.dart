@@ -11,8 +11,6 @@ import 'package:stocks_tutorial/utils/candle_helper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ChartPage extends StatefulWidget {
-  static const minimumCandles = 5;
-
   const ChartPage({
     Key? key,
   }) : super(key: key);

@@ -160,10 +160,6 @@ class SearchFormState extends State<SearchForm> {
           if (s == null || s.trim().isEmpty) {
             return "Symbol is required";
           }
-
-          if (s.trim().length != s.length) {
-            return "Whitespaces are not allowed";
-          }
         },
       ),
     );

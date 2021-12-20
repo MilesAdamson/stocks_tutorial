@@ -30,10 +30,10 @@ extension CandleHelper on List<Candle> {
 
   double interval(
     bool isPortrait, {
-    int desiredLandscapeInterval = 16,
+    int desiredPortraitInterval = 16,
   }) {
     final desiredLines =
-        isPortrait ? desiredLandscapeInterval : desiredLandscapeInterval / 2;
+        isPortrait ? desiredPortraitInterval : desiredPortraitInterval / 2;
     final plotHeight = max - min;
     return (plotHeight / desiredLines).roundToDouble();
   }
