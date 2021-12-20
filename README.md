@@ -1,5 +1,10 @@
 # Stocks Tutorial
 
+### 0. Prerequisites
+- Know how freezed is used to generate `toString`, `equality`, `copyWith` and `hashCode`
+- Know how json serializable is used to generate `toJson` and `fromJson`
+- Know in general how bloc and cubit work
+
 ### 1. Background
 - Show what is meant by a candle on a stocks chart
 - Define open, close, high, low, bullish, bearish
